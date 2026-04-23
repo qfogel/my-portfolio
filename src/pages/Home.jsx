@@ -19,10 +19,10 @@ const PROJECTS = [
   },
   {
     id: 3,
-    title: 'DNS Client & Server',
-    tag: 'Python · Sockets · Networking',
+    title: 'Task & Assignment Tracker',
+    tag: 'Use Case Diagrams, ER Diagrams, UML Class Diagrams',
     description:
-      'A fully functional DNS client/server implementation built from scratch using raw UDP sockets. Includes DNS spoofing detection via transaction ID and source IP validation, multithreaded request handling, and support for A, CNAME, and MX record types.',
+      'A system that addresses a real-world business or organizational problem, applying system analysis and design methodologies.',
     link: '#',
   },
 ];
