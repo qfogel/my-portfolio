@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 const PROJECTS = [
   {
@@ -52,6 +53,7 @@ function ContactForm() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
+  const [sending, setSending] = useState(false);
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -64,7 +66,29 @@ function ContactForm() {
       return;
     }
     setError('');
-    setSubmitted(true);
+    setSending(true);
+
+    emailjs.send(
+      'service_7aihbmh',
+      'template_fwi4avn',
+      {
+        name:    form.name,
+        email:   form.email,
+        message: form.message,
+        title:   'Portfolio Contact',
+        time:    new Date().toLocaleString(),
+      },
+      'QEVJmY-paIA8Pzz7x'
+    )
+    .then(() => {
+      setSending(false);
+      setSubmitted(true);
+    })
+    .catch((err) => {
+      console.error(err);
+      setSending(false);
+      setError('Something went wrong. Please try again.');
+    });
   }
 
   if (submitted) {
@@ -114,28 +138,30 @@ function ContactForm() {
           placeholder="What's on your mind?"
         />
       </div>
-            <button type="submit" className="btn-primary">Send Message</button>
-          </form>
-        );
-      }
-      
-      function Home() {
-        return (
-          <div className="home">
-            <section className="projects">
-              <h2>Projects</h2>
-              <div className="projects-grid">
-                {PROJECTS.map((project) => (
-                  <ProjectCard key={project.id} {...project} />
-                ))}
-              </div>
-            </section>
-            <section className="contact">
-              <h2>Get In Touch</h2>
-              <ContactForm />
-            </section>
-          </div>
-        );
-      }
-      
-      export default Home;
+      <button type="submit" className="btn-primary" disabled={sending}>
+        {sending ? 'Sending...' : 'Send Message'}
+      </button>
+    </form>
+  );
+}
+
+function Home() {
+  return (
+    <div className="home">
+      <section className="projects">
+        <h2>Projects</h2>
+        <div className="projects-grid">
+          {PROJECTS.map((project) => (
+            <ProjectCard key={project.id} {...project} />
+          ))}
+        </div>
+      </section>
+      <section className="contact">
+        <h2>Get In Touch</h2>
+        <ContactForm />
+      </section>
+    </div>
+  );
+}
+
+export default Home;
