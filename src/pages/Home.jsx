@@ -3,7 +3,7 @@ import { useState } from 'react';
 const PROJECTS = [
   {
     id: 1,
-    title: 'VetConnect',
+    title: 'VetConnect - SE 370',
     tag: 'Java · SQLite · Swing',
     description:
       'A VA education-benefit certification system for student veterans at CSUSM. Built with an MVC architecture, SQLite database (19 tables), full DAO layer, and Java Swing UI. Designed to streamline the certification workflow between students, the VA school certifying official, and the VA itself.',
@@ -11,7 +11,7 @@ const PROJECTS = [
   },
   {
     id: 2,
-    title: 'Versus',
+    title: 'Versus - CIS 444',
     tag: 'Node.js · Express · HTML/CSS/JS',
     description:
       'A retro-styled head-to-head voting web app where users battle images, ideas, and opinions. Features event delegation, dynamic DOM rendering, and a RESTful Express backend. Built as a group project with a focus on clean UX and client–server communication.',
@@ -19,8 +19,8 @@ const PROJECTS = [
   },
   {
     id: 3,
-    title: 'Task & Assignment Tracker',
-    tag: 'Use Case Diagrams, ER Diagrams, UML Class Diagrams',
+    title: 'Task & Assignment Tracker - CIS 341',
+    tag: 'Use Case Diagrams, ER/UML Diagrams',
     description:
       'A system that addresses a real-world business or organizational problem, applying system analysis and design methodologies.',
     link: '#',
