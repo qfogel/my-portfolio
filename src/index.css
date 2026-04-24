@@ -234,11 +234,19 @@ input, textarea { font-family: inherit; }
   gap: 0.5rem;
 }
 
+.about-ctas {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+}
+
 /* ── Projects ──────────────────────────────────────────────── */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.25rem;
+  grid-auto-rows: 1fr; /* equal row heights so cards line up */
 }
 
 .project-card {
@@ -247,6 +255,9 @@ input, textarea { font-family: inherit; }
   border-radius: var(--radius);
   padding: 1.5rem;
   transition: box-shadow var(--transition), transform var(--transition);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .project-card:hover {
@@ -274,6 +285,7 @@ input, textarea { font-family: inherit; }
   color: var(--text-muted);
   line-height: 1.65;
   margin-bottom: 1rem;
+  flex: 1; /* pushes the "View Project →" link to the bottom edge of every card */
 }
 
 .card-link {
@@ -478,6 +490,46 @@ input, textarea { font-family: inherit; }
   line-height: 1.8;
   margin-bottom: 1.4rem;
   max-width: 65ch;
+}
+
+/* Blog images + overflow safety */
+.blog-page img,
+.blog-page figure { max-width: 100%; height: auto; }
+
+.post-hero-image,
+.gallery-item { margin-bottom: 1.25rem; }
+
+.post-hero-image img,
+.gallery-item img {
+  width: 100%;
+  border-radius: var(--radius);
+  display: block;
+}
+
+.post-hero-image figcaption,
+.gallery-item figcaption {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 0.4rem;
+}
+
+.post-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.post-related {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.post-related ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
 /* ── Responsive ────────────────────────────────────────────── */

@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import emailjs from '@emailjs/browser';
+import emailjs from '@emailjs/browser'; // harmless to leave; remove if unused
 
+// TODO: replace link '#' values with real GitHub repo or live demo URLs
 const PROJECTS = [
   {
     id: 1,
@@ -21,12 +22,20 @@ const PROJECTS = [
   {
     id: 3,
     title: 'Task & Assignment Tracker - CIS 341',
-    tag: 'Use Case Diagrams, ER/UML Diagrams',
+    tag: 'Use Case Diagrams · ER/UML',
     description:
       'A system that addresses a real-world business or organizational problem, applying system analysis and design methodologies.',
     link: '#',
   },
+  // TODO: add additional projects here using the same shape
 ];
+
+// TODO: fill in your bio + LinkedIn URL; drop resume.pdf into /public/
+const BIO = `TODO: Write 2–3 sentences about yourself — who you are, what you study, what you build.`;
+const LINKEDIN_URL = 'https://www.linkedin.com/in/TODO';
+const RESUME_URL = '/my-portfolio/resume.pdf';
+
+const SKILLS = ['Java', 'JavaScript', 'Node.js', 'React', 'SQLite', 'SQL', 'HTML/CSS'];
 
 function Tag({ label }) {
   return <span className="tag">{label}</span>;
@@ -40,7 +49,7 @@ function ProjectCard({ title, tag, description, link }) {
         <Tag label={tag} />
       </div>
       <p>{description}</p>
-      {link !== '#' && (
+      {link && link !== '#' && (
         <a href={link} className="card-link" target="_blank" rel="noopener noreferrer">
           View Project →
         </a>
@@ -50,96 +59,35 @@ function ProjectCard({ title, tag, description, link }) {
 }
 
 function ContactForm() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState('');
-  const [sending, setSending] = useState(false);
-
-  function handleChange(e) {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (!form.name || !form.email || !form.message) {
-      setError('Please fill out all fields.');
-      return;
-    }
-    setError('');
-    setSending(true);
-
-    emailjs.send(
-      'service_7aihbmh',
-      'template_fwi4avn',
-      {
-        name:    form.name,
-        email:   form.email,
-        message: form.message,
-        title:   'Portfolio Contact',
-        time:    new Date().toLocaleString(),
-      },
-      'QEVJmY-paIA8Pzz7x'
-    )
-    .then(() => {
-      setSending(false);
-      setSubmitted(true);
-    })
-    .catch((err) => {
-      console.error(err);
-      setSending(false);
-      setError('Something went wrong. Please try again.');
-    });
-  }
-
-  if (submitted) {
-    return (
-      <div className="form-success">
-        <span className="success-icon">✓</span>
-        <p>Thanks, {form.name}! I'll get back to you soon.</p>
-      </div>
-    );
-  }
-
   return (
-    <form className="contact-form" onSubmit={handleSubmit}>
-      {error && <p className="form-error">{error}</p>}
+    <form
+      className="contact-form"
+      action="https://formsubmit.co/qfogel@gmail.com"
+      method="POST"
+    >
       <div className="form-row">
         <div className="form-group">
           <label htmlFor="name">Name</label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            value={form.name}
-            onChange={handleChange}
-            placeholder="Your name"
-          />
+          <input id="name" name="name" type="text" required placeholder="Your name" />
         </div>
         <div className="form-group">
           <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            value={form.email}
-            onChange={handleChange}
-            placeholder="your@email.com"
-          />
+          <input id="email" name="email" type="email" required placeholder="your@email.com" />
         </div>
       </div>
       <div className="form-group">
         <label htmlFor="message">Message</label>
-        <textarea
-          id="message"
-          name="message"
-          rows={5}
-          value={form.message}
-          onChange={handleChange}
-          placeholder="What's on your mind?"
-        />
+        <textarea id="message" name="message" rows={5} required placeholder="What's on your mind?" />
       </div>
-      <button type="submit" className="btn-primary" disabled={sending}>
-        {sending ? 'Sending...' : 'Send Message'}
+      <input
+        type="hidden"
+        name="_next"
+        value="https://qfogel.github.io/my-portfolio/?success=true"
+      />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_subject" value="New message from portfolio" />
+      <button type="submit" className="btn-primary">
+        Send Message
       </button>
     </form>
   );
@@ -148,17 +96,62 @@ function ContactForm() {
 function Home() {
   return (
     <div className="home">
-      <section className="projects">
-        <h2>Projects</h2>
-        <div className="projects-grid">
-          {PROJECTS.map((project) => (
-            <ProjectCard key={project.id} {...project} />
-          ))}
+      <section id="about" className="section">
+        <div className="section-inner">
+          <p className="section-label">About</p>
+          <h2>A little about me</h2>
+          <div className="about-grid">
+            <div className="about-text">
+              <p>{BIO}</p>
+              <div className="about-ctas">
+                <a
+                  href={LINKEDIN_URL}
+                  className="btn-secondary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href={RESUME_URL}
+                  className="btn-secondary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Resume
+                </a>
+              </div>
+            </div>
+            <div className="about-skills">
+              <p className="skills-label">Skills</p>
+              <div className="skill-tags">
+                {SKILLS.map((s) => (
+                  <Tag key={s} label={s} />
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
-      <section className="contact">
-        <h2>Get In Touch</h2>
-        <ContactForm />
+
+      <section id="projects" className="section section-alt">
+        <div className="section-inner">
+          <p className="section-label">Projects</p>
+          <h2>Projects</h2>
+          <div className="projects-grid">
+            {PROJECTS.map((project) => (
+              <ProjectCard key={project.id} {...project} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="section">
+        <div className="section-inner">
+          <p className="section-label">Contact</p>
+          <h2>Get In Touch</h2>
+          <ContactForm />
+        </div>
       </section>
     </div>
   );

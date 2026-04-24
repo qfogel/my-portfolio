@@ -7,7 +7,7 @@ const POSTS = [
     date: 'March 30, 2026',
     title: 'Slowing Down in San Diego',
     preview:
-      'After the most intense semester of my life, I finally had a week with nowhere to be. Here\'s what that looked like.',
+      "After the most intense semester of my life, I finally had a week with nowhere to be. Here's what that looked like.",
     images: [
       {
         src: 'https://www.tryingtounwind.com/wp-content/uploads/2021/04/20210311_145903-1024x768.jpg',
@@ -29,6 +29,10 @@ I spent the first two days doing almost nothing, and I mean that in the best pos
 
 By mid-week I started feeling like a human being again. I drove up to Torrey Pines and did the coastal trail - one of those hikes where the trail ends at a cliff edge and you're looking down at the Pacific and you wonder how it's possible to live somewhere this beautiful and spend most of your time staring at a computer screen. Worth it every time.
     `,
+    relatedProjects: [
+      // TODO: replace '/#projects' with real project URLs when you have them
+      { label: 'VetConnect (SE 370)', href: '/#projects' },
+    ],
   },
   {
     id: 2,
@@ -43,15 +47,18 @@ By mid-week I started feeling like a human being again. I drove up to Torrey Pin
       },
       {
         src: 'https://media.california.com/media/_versions_webp/articles/hero-balboa___6639x2830____v1800x750__.webp',
-        caption: 'Balboa Park -always worth the walk.',
+        caption: 'Balboa Park - always worth the walk.',
       },
     ],
     content: `
-
-I also spent one afternoon at Balboa Park just walking around. It had been awhile since I've been to the park. It's unfortunate now that you have to pay for parking. 
+I also spent one afternoon at Balboa Park just walking around. It had been a while since I've been to the park. It's unfortunate now that you have to pay for parking.
 
 As for the semester: carrying eight courses at once has been something I wouldn't wish on anyone, but it's also been proof of what's possible when you stay disciplined. Operating Systems and Databases were both genuinely challenging. But VetConnect — the project I've been building with my SE 370 group — is the thing I'm most proud of. Taking something from a use case diagram to an actual working Java application with a real database schema and DAO layer is a different kind of satisfaction than passing a test. Eight courses in. Still standing. Ready for the final push.
     `,
+    relatedProjects: [
+      { label: 'VetConnect (SE 370)', href: '/#projects' },
+      { label: 'Versus (CIS 444)', href: '/#projects' },
+    ],
   },
 ];
 
@@ -64,7 +71,9 @@ function PostCard({ post, isActive, onSelect }) {
       <span className="post-date">{post.date}</span>
       <h3>{post.title}</h3>
       <p>{post.preview}</p>
-      <span className="post-read">{isActive ? 'Currently reading' : 'Read post →'}</span>
+      <span className="post-read">
+        {isActive ? 'Currently reading' : 'Read post →'}
+      </span>
     </button>
   );
 }
@@ -85,9 +94,12 @@ function PostContent({ post }) {
       )}
 
       <div className="post-body">
-        {post.content.trim().split('\n\n').map((para, i) => (
-          <p key={i}>{para.trim()}</p>
-        ))}
+        {post.content
+          .trim()
+          .split('\n\n')
+          .map((para, i) => (
+            <p key={i}>{para.trim()}</p>
+          ))}
       </div>
 
       {post.images && post.images.length > 1 && (
@@ -100,13 +112,33 @@ function PostContent({ post }) {
           ))}
         </div>
       )}
+
+      {post.relatedProjects && post.relatedProjects.length > 0 && (
+        <aside className="post-related">
+          <p className="sidebar-label">Related projects</p>
+          <ul>
+            {post.relatedProjects.map((p) => (
+              <li key={p.label}>
+                <a
+                  href={p.href}
+                  className="card-link"
+                  target={p.href.startsWith('http') ? '_blank' : undefined}
+                  rel={p.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                >
+                  {p.label} →
+                </a>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      )}
     </article>
   );
 }
 
 function Blog() {
   const [activeId, setActiveId] = useState(1);
-  const activePost = POSTS.find(p => p.id === activeId);
+  const activePost = POSTS.find((p) => p.id === activeId);
 
   return (
     <main className="blog-page">
@@ -122,7 +154,7 @@ function Blog() {
       <div className="blog-layout">
         <aside className="blog-sidebar">
           <p className="sidebar-label">Posts</p>
-          {POSTS.map(post => (
+          {POSTS.map((post) => (
             <PostCard
               key={post.id}
               post={post}
