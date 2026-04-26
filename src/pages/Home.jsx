@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import emailjs from '@emailjs/browser'; // harmless to leave; remove if unused
+import Hero from '../components/Hero';
 
 // TODO: replace link '#' values with real GitHub repo or live demo URLs
 const PROJECTS = [
@@ -27,12 +26,35 @@ const PROJECTS = [
       'A system that addresses a real-world business or organizational problem, applying system analysis and design methodologies.',
     link: '#',
   },
-  // TODO: add additional projects here using the same shape
+  {
+    id: 4,
+    title: 'TODO: Project Title',
+    tag: 'TODO · Tech · Stack',
+    description:
+      'TODO: 2–3 sentence description of what the project does, who it\'s for, and what you learned or shipped.',
+    link: '#',
+  },
+  {
+    id: 5,
+    title: 'TODO: Project Title',
+    tag: 'TODO · Tech · Stack',
+    description:
+      'TODO: 2–3 sentence description of what the project does, who it\'s for, and what you learned or shipped.',
+    link: '#',
+  },
+  {
+    id: 6,
+    title: 'TODO: Project Title',
+    tag: 'TODO · Tech · Stack',
+    description:
+      'TODO: 2–3 sentence description of what the project does, who it\'s for, and what you learned or shipped.',
+    link: '#',
+  },
 ];
 
 // TODO: fill in your bio + LinkedIn URL; drop resume.pdf into /public/
-const BIO = `TODO: Write 2–3 sentences about yourself — who you are, what you study, what you build.`;
-const LINKEDIN_URL = 'https://www.linkedin.com/in/TODO';
+const BIO = `Quinn is an active-duty U.S. Marine with over 13 years of service and a full-time student at California State University San Marcos, where he's finishing a B.S. in Computer Information Systems. When he's not studying, he's hanging out with Oreo, his 4-year-old French Bulldog. His interests sit at the intersection of technology, entrepreneurship, and serving the veteran community.`;
+const LINKEDIN_URL = 'https://www.linkedin.com/in/quinnfogel';
 const RESUME_URL = '/my-portfolio/resume.pdf';
 
 const SKILLS = ['Java', 'JavaScript', 'Node.js', 'React', 'SQLite', 'SQL', 'HTML/CSS'];
@@ -96,6 +118,7 @@ function ContactForm() {
 function Home() {
   return (
     <div className="home">
+      <Hero />
       <section id="about" className="section">
         <div className="section-inner">
           <p className="section-label">About</p>
