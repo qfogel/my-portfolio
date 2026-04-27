@@ -35,10 +35,6 @@ I also did the thing I always say I'll do during finals and never do: I picked u
 
 What I'm taking away from this week is how badly I'd underestimated the cost of never really stopping. You can run on momentum for a long time and convince yourself you're fine. Then you take a few days off and realize you were running on fumes. I'm going to be more deliberate about protecting a little of this feeling — even on normal weeks.
     `,
-    relatedProjects: [
-      // TODO: replace '/#projects' with real project URLs when you have them
-      { label: 'VetConnect (SE 370)', href: '/#projects' },
-    ],
   },
   {
     id: 2,
@@ -69,10 +65,6 @@ But VetConnect — the project I've been building with my SE 370 group — is th
 
 Eight courses in. Still standing. Ready for the final push.
     `,
-    relatedProjects: [
-      { label: 'VetConnect (SE 370)', href: '/#projects' },
-      { label: 'Versus (CIS 444)', href: '/#projects' },
-    ],
   },
 ];
 
@@ -127,25 +119,6 @@ function PostContent({ post }) {
         </div>
       )}
 
-      {post.relatedProjects && post.relatedProjects.length > 0 && (
-        <aside className="post-related">
-          <p className="sidebar-label">Related projects</p>
-          <ul>
-            {post.relatedProjects.map((p) => (
-              <li key={p.label}>
-                <a
-                  href={p.href}
-                  className="card-link"
-                  target={p.href.startsWith('http') ? '_blank' : undefined}
-                  rel={p.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                >
-                  {p.label} →
-                </a>
-              </li>
-            ))}
-          </ul>
-        </aside>
-      )}
     </article>
   );
 }
