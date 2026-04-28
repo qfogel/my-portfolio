@@ -7,9 +7,8 @@ function Hero() {
         CIS student at CSUSM · building full-stack software.
       </p>
       <p className="hero-sub">
-        I design and ship clean, well-tested applications — from Java + SQLite
-        systems to React front-ends. Currently wrapping up my degree and looking
-        for what's next.
+        Building practical software, from database-backed Java tools to React
+        web apps. Currently wrapping up my degree and looking for what's next.
       </p>
       <div className="hero-ctas">
         <a href="#projects" className="btn-primary">See my work</a>
