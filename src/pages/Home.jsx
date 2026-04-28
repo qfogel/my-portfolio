@@ -147,7 +147,7 @@ function Home() {
           </div>
           <figure className="about-aircraft">
             <img src={AIRCRAFT_URL} alt="KC-130J Super Hercules" />
-            <figcaption>KC-130J Super Hercules · U.S. Marine Corps</figcaption>
+            <figcaption>KC-130J Super Hercules · U.S. Marine Corps · Sapporo, Japan</figcaption>
           </figure>
         </div>
       </section>
