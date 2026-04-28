@@ -112,7 +112,7 @@ function Home() {
                 <div>
                   <p>{BIO}</p>
                   <p>
-                    Within the Marine Corps, he serves as aircrew and a KC-130J
+                    In the Marine Corps, he is aircrew serving as a KC-130J
                     loadmaster.
                   </p>
                 </div>
