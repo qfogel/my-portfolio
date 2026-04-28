@@ -26,30 +26,6 @@ const PROJECTS = [
       'A system that addresses a real-world business or organizational problem, applying system analysis and design methodologies.',
     link: '#',
   },
-  {
-    id: 4,
-    title: 'TODO: Project Title',
-    tag: 'TODO · Tech · Stack',
-    description:
-      'TODO: 2–3 sentence description of what the project does, who it\'s for, and what you learned or shipped.',
-    link: '#',
-  },
-  {
-    id: 5,
-    title: 'TODO: Project Title',
-    tag: 'TODO · Tech · Stack',
-    description:
-      'TODO: 2–3 sentence description of what the project does, who it\'s for, and what you learned or shipped.',
-    link: '#',
-  },
-  {
-    id: 6,
-    title: 'TODO: Project Title',
-    tag: 'TODO · Tech · Stack',
-    description:
-      'TODO: 2–3 sentence description of what the project does, who it\'s for, and what you learned or shipped.',
-    link: '#',
-  },
 ];
 
 // TODO: fill in your bio + LinkedIn URL; drop resume.pdf into /public/
