@@ -1,4 +1,9 @@
 function Hero() {
+  const scrollTo = (id) => (e) => {
+    e.preventDefault();
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section className="hero">
       <p className="hero-eyebrow">Hi, I'm</p>
@@ -11,8 +16,8 @@ function Hero() {
         web apps. Currently wrapping up my degree and looking for what's next.
       </p>
       <div className="hero-ctas">
-        <a href="#projects" className="btn-primary">See my work</a>
-        <a href="#contact" className="btn-secondary">Get in touch</a>
+        <a href="#projects" onClick={scrollTo('projects')} className="btn-primary">See my work</a>
+        <a href="#contact" onClick={scrollTo('contact')} className="btn-secondary">Get in touch</a>
       </div>
       <span className="hero-badge mono">scroll ↓</span>
     </section>
