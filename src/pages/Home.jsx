@@ -32,6 +32,7 @@ const PROJECTS = [
 const BIO = `Quinn is an active-duty U.S. Marine with over 13 years of service and a full-time student at California State University San Marcos, where he's finishing a B.S. in Computer Information Systems. When he's not studying, he's hanging out with Oreo, his 4-year-old French Bulldog. His interests sit at the intersection of technology, entrepreneurship, and serving the veteran community.`;
 const LINKEDIN_URL = 'https://www.linkedin.com/in/quinnfogel';
 const RESUME_URL = '/my-portfolio/resume.pdf';
+const PHOTO_URL = '/my-portfolio/oreo.jpeg';
 
 const SKILLS = ['Java', 'JavaScript', 'Node.js', 'React', 'SQLite', 'SQL', 'HTML/CSS'];
 
@@ -101,7 +102,14 @@ function Home() {
           <h2>A little about me</h2>
           <div className="about-grid">
             <div className="about-text">
-              <p>{BIO}</p>
+              <div className="about-bio">
+                <img
+                  className="about-photo"
+                  src={PHOTO_URL}
+                  alt="Oreo, my French Bulldog"
+                />
+                <p>{BIO}</p>
+              </div>
               <div className="about-ctas">
                 <a
                   href={LINKEDIN_URL}
