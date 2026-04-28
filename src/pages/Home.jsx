@@ -33,6 +33,7 @@ const BIO = `Quinn is an active-duty U.S. Marine with over 13 years of service a
 const LINKEDIN_URL = 'https://www.linkedin.com/in/quinnfogel';
 const RESUME_URL = '/my-portfolio/resume.pdf';
 const PHOTO_URL = '/my-portfolio/oreo.jpeg';
+const AIRCRAFT_URL = '/my-portfolio/KC-130J.jpg';
 
 const SKILLS = ['Java', 'JavaScript', 'Node.js', 'React', 'SQLite', 'SQL', 'HTML/CSS'];
 
@@ -108,7 +109,13 @@ function Home() {
                   src={PHOTO_URL}
                   alt="Oreo, my French Bulldog"
                 />
-                <p>{BIO}</p>
+                <div>
+                  <p>{BIO}</p>
+                  <p>
+                    Within the Marine Corps, he serves as aircrew and a KC-130J
+                    loadmaster.
+                  </p>
+                </div>
               </div>
               <div className="about-ctas">
                 <a
@@ -138,6 +145,10 @@ function Home() {
               </div>
             </div>
           </div>
+          <figure className="about-aircraft">
+            <img src={AIRCRAFT_URL} alt="KC-130J Super Hercules" />
+            <figcaption>KC-130J Super Hercules · U.S. Marine Corps</figcaption>
+          </figure>
         </div>
       </section>
 

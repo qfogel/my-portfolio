@@ -242,6 +242,22 @@ input, textarea { font-family: inherit; }
   .about-photo { width: 96px; height: 96px; }
 }
 
+.about-aircraft {
+  margin-top: 4rem;
+}
+.about-aircraft img {
+  width: 100%;
+  border-radius: var(--radius);
+  display: block;
+}
+.about-aircraft figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
 .skills-label {
   font-family: var(--font-mono);
   font-size: 0.75rem;
