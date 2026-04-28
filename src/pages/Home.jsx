@@ -17,6 +17,7 @@ const PROJECTS = [
     description:
       'A retro-styled head-to-head voting web app where users battle images, ideas, and opinions. Features event delegation, dynamic DOM rendering, and a RESTful Express backend. Built as a group project with a focus on clean UX and client–server communication.',
     link: '#',
+    image: '/my-portfolio/versus.png',
   },
   {
     id: 3,
@@ -41,9 +42,12 @@ function Tag({ label }) {
   return <span className="tag">{label}</span>;
 }
 
-function ProjectCard({ title, tag, description, link }) {
+function ProjectCard({ title, tag, description, link, image }) {
   return (
     <article className="project-card">
+      {image && (
+        <img className="project-image" src={image} alt={`${title} screenshot`} />
+      )}
       <div className="card-header">
         <h3>{title}</h3>
         <Tag label={tag} />
