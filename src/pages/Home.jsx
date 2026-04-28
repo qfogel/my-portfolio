@@ -9,6 +9,7 @@ const PROJECTS = [
     description:
       'A VA education-benefit certification system for student veterans at CSUSM. Built with an MVC architecture, SQLite database (19 tables), full DAO layer, and Java Swing UI. Designed to streamline the certification workflow between students, the VA school certifying official, and the VA itself.',
     link: '#',
+    image: '/my-portfolio/vetconnect.png',
   },
   {
     id: 2,
