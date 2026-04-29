@@ -27,6 +27,7 @@ const PROJECTS = [
     description:
       'A system that addresses a real-world business or organizational problem, applying system analysis and design methodologies.',
     link: '#',
+    image: '/my-portfolio/taskandassignmenttracker.png',
   },
 ];
 
